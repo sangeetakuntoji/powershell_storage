@@ -18,13 +18,8 @@ on:
               creds: ${{secrets.AZURE_CREDENTIALS}}
               enable-AzPSSession: true
 
-            - name: Create an RG and SA
-              uses: azure/powershell@v1
-              with:
-               inlineScript: |
-                Install-Module -Name Az -Repository PSGallery -Force 
-                $rg = New-AzResourceGroup -Name 'New Resource Group' -Location 'West US 2'
-                New-AzStorageAccount -ResourceGroupName $rg.Name -Location $rg.Location -Name 'superawesomedemosa' -SkuName Standard_LRS
-                azPSVersion: "latest"
+            - name: Build Module
+              shell: pwsh
+              run: ./build.ps1 -Task ModuleBuild
     
      
