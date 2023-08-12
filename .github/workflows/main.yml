@@ -20,6 +20,6 @@ on:
 
             - name: Build Module
               shell: pwsh
-              run: ./build.ps1 -Task ModuleBuild
+              run: ./ps/rg.ps1 -Task ModuleBuild
     
      
